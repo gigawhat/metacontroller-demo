@@ -1,0 +1,17 @@
+FROM python:3-alpine
+
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY requirements.txt /app/requirements.txt
+
+RUN pip install -r requirements.txt
+
+COPY sync.py /app/sync.py
+
+USER nobody
+
+EXPOSE 5000
+
+CMD ["python", "sync.py"]

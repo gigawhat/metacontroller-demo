@@ -1,0 +1,15 @@
+environments:
+  default:
+    kubeContext: kind-metacontroller-demo
+---
+releases:
+  - name: metacontroller
+    namespace: metacontroller-system
+    chart: oci://ghcr.io/metacontroller/metacontroller-helm
+    version: v2.2.5
+    values:
+      - fullnameOverride: metacontroller
+  - name: controller
+    needs:
+      - metacontroller-system/metacontroller
+    chart: ./demoapps-controller/deploy

@@ -1,0 +1,7 @@
+kind: DemoApp
+apiVersion: example.com/v1
+metadata:
+  name: foo
+spec:
+  image: nginx:latest
+  port: 80
